@@ -43,9 +43,19 @@ if ($result->num_rows > 0) {
         $i++;
 
         echo '<a-box color="#c0ebf0" depth="0.5" height="'.$normalizedValue.'" width="0.5" position="'.$i.' '.$pos.' -20"></a-box>';
+        echo '<a-text value="'.$array[$k].'" side="double" width="10" rotation="0 0 -60" position="'.$i.', -2, -19.75"></a-text>';
         //echo '<a-sphere color=red radius="0.2" position="'.$i.' '.$normalizedValue.' -20"></a-sphere>';
     
     }
+
+    echo '<a-entity 
+            line="start: -25, -1, -19.75; end: '.++$i.' -1 -19.75; color: white"
+            line__2="start: -25, -1, -19.75; end: -25, 16, -19.75; color: white"
+            line__3="start: -25, -1, -19.75; end: -25, -1, -30; color: white"
+          ></a-entity>
+          <a-text value="Some example Values" side="double" width="30" rotation="0 0 0" position=" 0, 18, -19.75"></a-text>
+          <a-text value="x-axis" side="double" width="20" rotation="0 0 0" position=" 27, -1, -19.75"></a-text>'
+          ;
 
 
 } else {
