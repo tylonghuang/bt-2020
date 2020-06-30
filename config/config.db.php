@@ -13,6 +13,5 @@
         die("Connection failed: " . $conn->connect_error);
 
     }
-
-    echo "<script>console.log('connected successfully to database' );</script>";
+    echo '<script>console.log("connected successfully to database" );</script>';
 ?>

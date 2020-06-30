@@ -7,7 +7,7 @@ function normalize($min, $max, $wert){
 
 $i = -25;
 $j = 0;
-$amountValues = 50;
+$amountValues = 100;
 
 // Query
 $sql = "SELECT Revenue FROM f_gbi LIMIT $amountValues";
@@ -19,7 +19,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 
         // Write rows from table into array
-        $array[$j] = $row['Revenue'];;
+        $array[$j] = $row['Revenue'];
         $j++;
 
     }
@@ -54,7 +54,7 @@ if ($result->num_rows > 0) {
             line__3="start: -25, -1, -19.75; end: -25, -1, -30; color: white"
           ></a-entity>
           <a-text value="Some example Values" side="double" width="30" rotation="0 0 0" position=" 0, 18, -19.75"></a-text>
-          <a-text value="x-axis" side="double" width="20" rotation="0 0 0" position=" 27, -1, -19.75"></a-text>'
+          <a-text value="x-axis" side="double" width="20" rotation="0 0 0" position=" '.($i + 1).', -1, -19.75"></a-text>'
           ;
 
 
@@ -63,8 +63,5 @@ if ($result->num_rows > 0) {
     echo "0 results";
 
 }
-
-// Close connection
-$conn->close();
 
 ?>
