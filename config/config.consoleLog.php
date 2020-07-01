@@ -1,15 +1,6 @@
 <?php
-
-    /*
-     *
-     * 
-     *  still needs to be commented
-     * 
-     * 
-     * 
-     */
-    
-
+   
+    // Function that substitutes the script tag to log output to the console by calling consoleLog($input);
     function consoleLog($loggedInput) {
 
         $loggedOutput = $loggedInput;
