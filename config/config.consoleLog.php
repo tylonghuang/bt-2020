@@ -9,7 +9,7 @@
             $loggedOutput = implode(',', $loggedOutput);
 
         echo "<script>console.log('" . $loggedOutput . "' );</script>";
-        
+
     }
 
 ?>

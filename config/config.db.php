@@ -1,4 +1,6 @@
 <?php
+
+    // Information for database connection
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -14,4 +16,5 @@
 
     }
     echo '<script>console.log("connected successfully to database" );</script>';
+
 ?>
