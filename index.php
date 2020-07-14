@@ -6,6 +6,9 @@
     require_once 'config/config.db.php';
     require_once 'config/config.fetch.php';
     require_once 'config/config.fetchTables.php';
+    require_once 'config/config.menu.php';
+
+    require_once 'config/config.test-file.php';
 
     require_once 'includes/footer.php';
 

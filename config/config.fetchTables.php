@@ -1,5 +1,19 @@
 <?php
 
+    /*
+     *      $tableNames is a multidimensional array
+     *
+     *          structure:
+     *              $tableNames[table][column]
+     *
+     *          name of the first table:
+     *              $tableNames[1][0]
+     *
+     *          name of the columns of the first table starting with the first:
+     *              $tableNames[1][1..n]
+     * 
+     */
+
     // Query to get table names from DB
     $showTables = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA = '$dbname'";
 
@@ -9,27 +23,31 @@
 
         while($row = $getTables->fetch_assoc()) {
 
+            global $tableNames;
+
             // Write table names into an array for further work
             $tableNames[] = $row['TABLE_NAME'];
 
         }
 
-        // Loop through table names to get the corresponding columns
-        for ($k = 0; $k < count($tableNames); $k++) {
+        global $tableCount;
 
-            $showColumns = "SHOW COLUMNS FROM $dbname.$tableNames[$k]";
+        // Loop through table names to get the corresponding columns
+        for ($tableCount = 0; $tableCount < count($tableNames); $tableCount++) {
+
+            $showColumns = "SHOW COLUMNS FROM $dbname.$tableNames[$tableCount]";
             $getColumns = $conn->query($showColumns);
 
             if ($getColumns->num_rows > 0) {
 
-                $tempTableName = $tableNames[$k];
-                $tableNames[$k] = array();
-                $tableNames[$k][0] = $tempTableName;
+                $tempTableName = $tableNames[$tableCount];
+                $tableNames[$tableCount] = array();
+                $tableNames[$tableCount][0] = $tempTableName;
                 $l = 1;
 
                 while($row = $getColumns->fetch_assoc()) {
 
-                    $tableNames[$k][$l] = $row['Field'];
+                    $tableNames[$tableCount][$l] = $row['Field'];
                     $l++;
 
                 }
@@ -42,7 +60,7 @@
         }
 
         // Log table names with all columns to console
-        for ($m = 0; $m < $k; $m++) {
+        for ($m = 0; $m < $tableCount; $m++) {
             for ($n = 1; $n < count($tableNames[$m]); $n++){
                 $dummy = $tableNames[$m][0].': '.$tableNames[$m][$n];
                 consoleLog($dummy);

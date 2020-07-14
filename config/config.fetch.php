@@ -42,7 +42,7 @@
             $pos = $normalizedValue / 2;
             $i++;
 
-            echo '<a-box color="#c0ebf0" depth="0.5" height="'.$normalizedValue.'" width="0.5" position="'.$i.' '.$pos.' -20"></a-box>';
+            echo '<a-box change-color-on-hover="color: #22c9b3" color="#c0ebf0" depth="0.5" height="'.$normalizedValue.'" width="0.5" position="'.$i.' '.$pos.' -20"></a-box>';
             echo '<a-text value="'.$array[$k].'" side="double" width="10" rotation="0 0 -60" position="'.$i.', -2, -19.75"></a-text>';
             //echo '<a-sphere color=red radius="0.2" position="'.$i.' '.$normalizedValue.' -20"></a-sphere>';
         
