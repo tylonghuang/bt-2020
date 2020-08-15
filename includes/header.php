@@ -17,5 +17,3 @@
                 <!-- <a-cursor>
                 </a-cursor> -->
             </a-entity>
-
-            <a-entity id="box" cursor-listener geometry="primitive: box" material="color: blue"></a-entity>

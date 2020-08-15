@@ -104,3 +104,33 @@
     z-offset="0.005"
     input-status="empty">
 </a-text>
+<a-text
+    link="href: config/config.fetchData.php"
+    generate-button
+    value="Generate"
+    position="20 -2 -8.99"
+    width="10"
+    geometry="primitive: plane; height: 2; width:10;"
+    material="color: white"
+    color="black"
+    z-offset="0.005"
+    input-status="empty">
+</a-text>
+
+<?php
+    if (isset($_REQUEST['xC'])){
+        $XColumn = $_REQUEST['xC'];
+        echo "<script>console.log('" . $XColumn . "' );</script>";
+        echo    '<a-text
+                    generate-button
+                    value="'.$XColumn.'"
+                    position="20 -6 -8.99"
+                    width="10"
+                    geometry="primitive: plane; height: 2; width:10;"
+                    material="color: white"
+                    color="black"
+                    z-offset="0.005"
+                    input-status="empty">
+                </a-text>';
+    }
+?>

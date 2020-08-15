@@ -142,6 +142,7 @@ AFRAME.registerComponent('x-axis-input', {
             return function() {
                 try {
                     el.setAttribute('value', xOtherElem[i].getAttribute('value'));
+                    el.setAttribute('table-name', xOtherElem[i].getAttribute('table-name'));
                     xOtherElem = [];
                     el.setAttribute('material', 'color', defaultColor);
                     inputStatus = "filled";
@@ -228,6 +229,7 @@ AFRAME.registerComponent('y-axis-input', {
             return function() {
                 try {
                     el.setAttribute('value', yOtherElem[i].getAttribute('value'));
+                    el.setAttribute('table-name', yOtherElem[i].getAttribute('table-name'));
                     yOtherElem = [];
                     el.setAttribute('material', 'color', defaultColor);
                     inputStatus = "filled";
@@ -314,6 +316,7 @@ AFRAME.registerComponent('z-axis-input', {
             return function() {
                 try {
                     el.setAttribute('value', zOtherElem[i].getAttribute('value'));
+                    el.setAttribute('table-name', zOtherElem[i].getAttribute('table-name'));
                     zOtherElem = [];
                     el.setAttribute('material', 'color', defaultColor);
                     inputStatus = "filled";
@@ -325,3 +328,24 @@ AFRAME.registerComponent('z-axis-input', {
         }
     }
 });
+
+
+AFRAME.registerComponent('generate-button', {
+    init: function() {
+        var el = this.el;
+        el.addEventListener('click', function() {
+            var xValues = document.querySelectorAll('a-text[x-axis-input]');
+            var yValues = document.querySelectorAll('a-text[y-axis-input]');
+            var zValues = document.querySelectorAll('a-text[z-axis-input]');
+            var xColumn = xValues[0].getAttribute('value');
+            var xTable = xValues[0].getAttribute('table-name');
+            var yColumn = yValues[0].getAttribute('value');
+            var yTable = yValues[0].getAttribute('table-name');
+            var zColumn = zValues[0].getAttribute('value');
+            var zTable = zValues[0].getAttribute('table-name');
+            this.setAttribute('material', 'color', 'lightblue');
+            var requestLink = "href: fetchData.php?xC=" + xColumn + "&xT=" + xTable + "&yC=" + yColumn + "&yT=" + yTable + "&zC=" + zColumn + "&zT=" + zTable;
+            this.setAttribute('link', requestLink)
+        });
+    }
+})
