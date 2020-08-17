@@ -13,7 +13,7 @@
     <body>
     
         <a-scene background="color: #343d42" cursor="rayOrigin: mouse">
-            <a-entity camera look-controls wasd-controls="acceleration:500" position="0 3 0">
+            <a-entity camera look-controls wasd-controls="acceleration:500" position="10 4 20">
                 <!-- <a-cursor>
                 </a-cursor> -->
             </a-entity>

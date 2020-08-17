@@ -1,67 +1,108 @@
 <?php
 
-    // Normalize values to the same given maximum
-    function normalize($min, $max, $wert){
-        return ($wert - $min) / $max;
-    }
+    /*
+     *      $values is a multidimensional array
+     *
+     *          structure:
+     *              $values[x-Axis][z-Axis][y-axis]
+     * 
+     */
 
-    $i = -25;
+    global $maxY;
+    global $minY;
+    global $quantityX;
+    global $quantityZ;
+    $maxY = 0;
+    $minY = 0;
+    $i = 0;
     $j = 0;
-    $amountValues = 100;
+    $k = 0;
+    $summedValueY = 0;
+    $limit = 1000;
 
-    // Query
-    $sql = "SELECT $yColumn FROM $yTable LIMIT $amountValues";
-    $result = $conn->query($sql);
+    // Query for x-Axis
+    $sqlX = "SELECT DISTINCT $xColumn FROM $xTable ORDER BY $xColumn";
+    $result = $conn->query($sqlX);
 
     if ($result->num_rows > 0) {
 
-        // Fetch results
+        // Fetch results for x-Axis
         while($row = $result->fetch_assoc()) {
 
-            // Write rows from table into array
-            $array[$j] = $row[$yColumn];
-            $j++;
+            global $values;
+            global $xValues;
+
+            // Write values from x-Axis into large array
+            $values[] = $row[$xColumn];
+            $xValues[] = $row[$xColumn];
+            $i++;
 
         }
 
-        // Get maximum value in fetched rows
-        $maxValue = max($array);
+        $quantityX = $i;
 
-        // Set minimum value to 0 for normalization
-        $minValue = 0;
+        // For-Loop to go through z-axis
+        for ($i = 0; $i < $quantityX; $i++){
+        
+            $conditionX = $values[$i]; 
 
-        // Loop over normalized values and display them
-        for ($k = 0; $k < $amountValues; $k++) {
+            // Query for z-Axis
+            $zSql = "SELECT DISTINCT $zColumn FROM $zTable WHERE $xColumn='$conditionX' ORDER BY $zColumn DESC";
+            $result = $conn->query($zSql);
+            $j = 0;
 
-            // Call normalize function that can be adjusted by changing the factor
-            $normalizedValue = normalize($minValue, $maxValue, $array[$k]) * 15;
+            if ($result->num_rows > 0) {
 
-            echo "<script>console.log(".$normalizedValue.");</script>";
+                $values[$i] = array();
 
-            // Center elements vertically
-            $pos = $normalizedValue / 2;
-            $i++;
+                while($row = $result->fetch_assoc()) {
 
-            echo '<a-box change-color-on-hover="color: #22c9b3" color="#c0ebf0" depth="0.5" height="'.$normalizedValue.'" width="0.5" position="'.$i.' '.$pos.' -20"></a-box>';
-            echo '<a-text value="'.$array[$k].'" side="double" width="10" rotation="0 0 -60" position="'.$i.', -2, -19.75"></a-text>';
-            //echo '<a-sphere color=red radius="0.2" position="'.$i.' '.$normalizedValue.' -20"></a-sphere>';
+                    global $zValues;
+
+                    // Write values from z-Axis into large array
+                    $values[$i][] = $row[$zColumn];
+                    $zValues[] = $row[$zColumn];
+                    $j++;
+        
+                }
+
+                $quantityZ = $j;
+
+                // For-Loop to go through y-axis
+                for ($j = 0; $j < $quantityZ; $j++){
+                    
+                    $conditionZ = $values[$i][$j];
+                    $summedValueY = 0;
+                    // Query for y-Axis
+                    $ySql = "SELECT $yColumn FROM $yTable WHERE $xColumn='$conditionX' AND $zColumn='$conditionZ'";
+                    $result = $conn->query($ySql);
+
+                    if ($result->num_rows > 0) {
+
+                        $values[$i][$j] = array();
+
+                        while($row = $result->fetch_assoc()) {
+
+                            // Sum values from y-Axis                            
+                            $summedValueY = $summedValueY + str_replace(',', '.', $row[$yColumn]);
+                
+                        }
+
+                        // Write summed value from y-Axis into large array
+                        $values[$i][$j][0] = $summedValueY;
+                        $test = $values[$i][$j][0];                      
+
+                    }
+
+                    if ($maxY < max($values[$i][$j])){
+                        $maxY = max($values[$i][$j]);
+                    }
+                
+                }
+
+            }
         
         }
 
-        echo '<a-entity
-                line="start: -25, -1, -19.75; end: '.++$i.' -1 -19.75; color: white"
-                line__2="start: -25, -1, -19.75; end: -25, 16, -19.75; color: white"
-                line__3="start: -25, -1, -19.75; end: -25, -1, -30; color: white"
-            ></a-entity>
-            <a-text value="'.$yColumn.'" side="double" width="30" rotation="0 0 0" position=" 0, 18, -19.75"></a-text>
-            <a-text value="x-axis" side="double" width="20" rotation="0 0 0" position=" '.($i + 1).', -1, -19.75"></a-text>'
-        ;
-
-
-    } else {
-
-        echo "0 results";
-
     }
-
 ?>

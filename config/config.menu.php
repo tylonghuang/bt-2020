@@ -117,7 +117,7 @@
     input-status="empty">
 </a-text>
 
-<?php
+<?php /*
     if (isset($_REQUEST['xC'])){
         $XColumn = $_REQUEST['xC'];
         echo "<script>console.log('" . $XColumn . "' );</script>";
@@ -132,5 +132,5 @@
                     z-offset="0.005"
                     input-status="empty">
                 </a-text>';
-    }
+    }*/
 ?>

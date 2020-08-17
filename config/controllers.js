@@ -18,39 +18,32 @@ AFRAME.registerComponent('change-color-on-hover', {
     }
 });
 
-/*
-AFRAME.registerComponent('cursor-listener', {
+AFRAME.registerComponent('text-field', {
+
+
     init: function() {
-        var lastIndex = -1;
-        var COLORS = ['red', 'green', 'blue'];
-        this.el.addEventListener('click', function(evt) {
-            lastIndex = (lastIndex + 1) % COLORS.length;
-            this.setAttribute('material', 'color', COLORS[lastIndex]);
-            console.log('I was clicked at: ', evt.detail.intersection.point);
+        var el = this.el;
+        el.addEventListener('mouseenter', function() {
+            let infId = el.getAttribute('infId')
+            let customQuery = 'a-text[infId="' + infId + '"]'
+            let infField = document.querySelector(customQuery);
+            infField.setAttribute('visible', true);
+            if (infField.getAttribute('value') !== 'Not Found') {
+                el.setAttribute('color', '#11adbf');
+            }
+        });
+
+        el.addEventListener('mouseleave', function() {
+            let infId = el.getAttribute('infId')
+            let customQuery = 'a-text[infId="' + infId + '"]'
+            let infField = document.querySelector(customQuery);
+            infField.setAttribute('visible', false);
+            if (infField.getAttribute('value') !== 'Not Found') {
+                el.setAttribute('color', '#c0ebf0');
+            }
         });
     }
 });
-*/
-
-/* AFRAME.registerComponent('data-type', {
-    init: function() {
-        var dataType = this.data;
-        var el = this.el;
-        var value = el.getAttribute('value');
-        var tableName = el.getAttribute('table-name');
-        el.addEventListener('click', function() {
-            if (dataType != "table") {
-                console.log("column-name: " + value);
-                console.log("data-type: " + dataType);
-                console.log("table-name: " + tableName);
-            } else if (dataType == "table") {
-                console.log("table-name: " + value);
-                console.log("data-type: " + dataType);
-            }
-            console.log("__________");
-        });
-    }
-}); */
 
 var xOtherElem;
 var yOtherElem;
@@ -345,7 +338,7 @@ AFRAME.registerComponent('generate-button', {
             var zTable = zValues[0].getAttribute('table-name');
             this.setAttribute('material', 'color', 'lightblue');
             var requestLink = "href: fetchData.php?xC=" + xColumn + "&xT=" + xTable + "&yC=" + yColumn + "&yT=" + yTable + "&zC=" + zColumn + "&zT=" + zTable;
-            this.setAttribute('link', requestLink)
+            this.setAttribute('link', requestLink);
         });
     }
 })
