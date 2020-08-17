@@ -24,7 +24,7 @@
     require_once 'config/config.consoleLog.php';
     require_once 'config/config.db.php';
     require_once 'config/config.fetch.php';
-    require_once 'config/config.plot.php';
+    require_once 'config/config.plotter.php';
 
 ?>
 

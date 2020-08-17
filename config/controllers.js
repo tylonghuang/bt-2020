@@ -337,7 +337,7 @@ AFRAME.registerComponent('generate-button', {
             var zColumn = zValues[0].getAttribute('value');
             var zTable = zValues[0].getAttribute('table-name');
             this.setAttribute('material', 'color', 'lightblue');
-            var requestLink = "href: fetchData.php?xC=" + xColumn + "&xT=" + xTable + "&yC=" + yColumn + "&yT=" + yTable + "&zC=" + zColumn + "&zT=" + zTable;
+            var requestLink = "href: plot.php?xC=" + xColumn + "&xT=" + xTable + "&yC=" + yColumn + "&yT=" + yTable + "&zC=" + zColumn + "&zT=" + zTable;
             this.setAttribute('link', requestLink);
         });
     }
