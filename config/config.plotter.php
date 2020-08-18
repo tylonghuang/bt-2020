@@ -70,7 +70,7 @@
                 echo    '<a-text
                             infId="'.$infId.'"
                             align="left"
-                            value="Not Found"
+                            value="No Values Found"
                             position="'.$i.' 18 '.$posZ.'"
                             width="10"
                             geometry="primitive: plane; height: 2; width:5;"

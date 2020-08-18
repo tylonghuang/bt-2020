@@ -5,10 +5,9 @@
         <meta charset="utf-8">
         <title>bt-2020</title>
 
-        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="/bt-2020/config/aframe.min.js"></script>
         <script src="/bt-2020/config/controllers.js"></script>
         <script src="/bt-2020/config/aframe-keyboard.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/aframe-mouse-dragndrop-component@latest/dist/index.js"></script>
     </head>
 
     <body>
