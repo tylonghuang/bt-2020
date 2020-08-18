@@ -51,19 +51,11 @@
                     $l++;
 
                 }
-                        
+
             } else {
 
                 consoleLog('0 results');
-                
-            }
-        }
 
-        // Log table names with all columns to console
-        for ($m = 0; $m < $tableCount; $m++) {
-            for ($n = 1; $n < count($tableNames[$m]); $n++){
-                $dummy = $tableNames[$m][0].': '.$tableNames[$m][$n];
-                consoleLog($dummy);
             }
         }
 

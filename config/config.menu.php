@@ -4,12 +4,12 @@
     for ($m = 0; $m < $tableCount; $m++) {
         $tableTextHeight = $tableTextHeight - 1;
         echo '  <a-text 
-                    value="'.$tableNames[$m][0].'" 
-                    side="double" 
-                    width="10" 
-                    rotation="0 0 0" 
+                    value="'.$tableNames[$m][0].'"
+                    side="double"
+                    width="10"
+                    rotation="0 0 0"
                     position="0 '.$tableTextHeight.' -8.99" 
-                    geometry="primitive: plane; height: auto; width:auto;" 
+                    geometry="primitive: plane; height: auto; width:auto;"
                     material="visible: false">
                     </a-text>';
         for ($n = 1; $n < count($tableNames[$m]); $n++){
@@ -19,28 +19,24 @@
 
             $dataType = fetchDataType($tableName, $columnName, $conn);
 
-            $dummy = $tableNames[$m][0].': '.$tableNames[$m][$n].': '.$dataType;
-            consoleLog($dummy);
             $tableTextHeight = $tableTextHeight - 1;
-            echo '  <a-text 
+            echo '  <a-text
                         id="1"
-                        data-type="'.$dataType.'" 
-                        table-name="'.$tableNames[$m][0].'" 
-                        change-color-on-hover="color: red" 
-                        value="'.$tableNames[$m][$n].'" 
-                        side="double" 
-                        width="10" 
-                        rotation="0 0 0" 
-                        position="1 '.$tableTextHeight.' -8.99" 
-                        geometry="primitive: plane; height: auto; width:auto;" 
+                        data-type="'.$dataType.'"
+                        table-name="'.$tableNames[$m][0].'"
+                        change-color-on-hover="color: red"
+                        value="'.$tableNames[$m][$n].'"
+                        side="double"
+                        width="10"
+                        rotation="0 0 0"
+                        position="1 '.$tableTextHeight.' -8.99"
+                        geometry="primitive: plane; height: auto; width:auto;"
                         material="visible: false">
                         </a-text>';
             $listedItemsCounter++;
         }
         $listedItemsCounter++;
     }
-    consoleLog($listedItemsCounter);
-
 ?>
 
 <a-plane 

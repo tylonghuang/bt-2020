@@ -4,7 +4,7 @@
     function normalize($min, $max, $wert){
         return ($wert - $min) / $max;
     }
-    
+
     global $heightNormalized;
     $heightNormalized = 15;
 
@@ -19,7 +19,7 @@
 
             if ((isset($values[$i][$j][0])) && ($values[$i][$j][0] !== 0)){
 
-            
+
                 $normalizedValue = normalize($minY, $maxY, $values[$i][$j][0]) * $heightNormalized;
                 //echo "<script>console.log(".$values[$i][$j][0].");</script>";
 
@@ -28,7 +28,7 @@
                 if ($normalizedValue !== 0) {
                     $posY = $normalizedValue / 2;
                 }
-                
+
                 $posZ = $j - $quantityZ;
 
                 echo    '<a-box    
@@ -40,7 +40,7 @@
                             width="0.5" 
                             position="'.$i.' '.$posY.' '.$posZ.'">
                         </a-box>';
-                
+
                 echo    '<a-text
                             infId="'.$infId.'"
                             align="left"

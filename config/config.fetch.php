@@ -43,7 +43,7 @@
 
         // For-Loop to go through z-axis
         for ($i = 0; $i < $quantityX; $i++){
-        
+
             $conditionX = $values[$i]; 
 
             // Query for z-Axis
@@ -63,23 +63,23 @@
                     $values[$i][] = $row[$zColumn];
                     $zValues[] = $row[$zColumn];
                     $j++;
-        
+
                 }
 
                 $quantityZ = $j;
 
                 // For-Loop to go through y-axis
                 for ($j = 0; $j < $quantityZ; $j++){
-                    
+
                     $conditionZ = $values[$i][$j];
                     $summedValueY = 0;
                     // Query for y-Axis
-                    $ySql = "SELECT $yColumn FROM $yTable WHERE $xColumn='$conditionX' AND $zColumn='$conditionZ'";
+                    $ySql = "SELECT $yColumn FROM $yTable WHERE $xColumn='$conditionX' AND $zColumn='$conditionZ' ";
 
                     if (isset($cColumn) && isset($cValue)) {
                         $ySql .= "AND $cColumn='$cValue'";
                     }
-                    
+
                     $result = $conn->query($ySql);
 
                     if ($result->num_rows > 0) {
@@ -90,7 +90,7 @@
 
                             // Sum values from y-Axis                            
                             $summedValueY = $summedValueY + str_replace(',', '.', $row[$yColumn]);
-                
+
                         }
 
                         // Write summed value from y-Axis into large array
@@ -102,11 +102,11 @@
                     if ($maxY < max($values[$i][$j])){
                         $maxY = max($values[$i][$j]);
                     }
-                
+
                 }
 
             }
-        
+
         }
 
     }
