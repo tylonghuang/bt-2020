@@ -103,6 +103,16 @@
                 </a-text>';
     }
 
+    if (isset($cColumn) && isset($cValue)) {
+        $ySql .= "AND $cColumn='$cValue'";
+        echo    '<a-text 
+                    value="Condition: '.$cColumn.'='.$cValue.'" 
+                    side="double"
+                    width="10" 
+                    position=" -1 -5 0">
+                </a-text>';
+    }
+
     echo    '<a-entity
                 line="start: -1, -1, 0; end: '.++$quantityX.' -1, 0; color: white"
                 line__2="start: -1, -1, 0; end: -1, '.++$heightNormalized.', 0; color: white"

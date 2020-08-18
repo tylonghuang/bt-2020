@@ -75,6 +75,11 @@
                     $summedValueY = 0;
                     // Query for y-Axis
                     $ySql = "SELECT $yColumn FROM $yTable WHERE $xColumn='$conditionX' AND $zColumn='$conditionZ'";
+
+                    if (isset($cColumn) && isset($cValue)) {
+                        $ySql .= "AND $cColumn='$cValue'";
+                    }
+                    
                     $result = $conn->query($ySql);
 
                     if ($result->num_rows > 0) {

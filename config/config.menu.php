@@ -48,21 +48,30 @@
     width="30" 
     rotation="0 0 0" 
     side="double" 
-    color="#212121" 
+    color="#08141C" 
     material="opacity: 0.97; transparent: true" 
     position="14 -4 -9">
 </a-plane>
 
+<a-entity
+    link="href: plot.php"
+    generate-button
+    text="value: GENERATE; color: white; z-offset: 0.005; width: 10; align: center;"
+    geometry="primitive: plane; height: 2; width: auto;"
+    material="color: #0F3448"
+    position="20 16 -8.99">
+</a-entity>
+
 <a-text
     value="x-axis"
     width="10"
-    position="12 10 -8.99">
+    position="10 12 -8.99">
 </a-text>
 <a-text
     x-axis-input
     value=""
     table-name=""
-    position="20 10 -8.99"
+    position="20 12 -8.99"
     width="10"
     geometry="primitive: plane; height: 2; width:10;"
     material="color: white"
@@ -73,13 +82,13 @@
 <a-text
     value="y-axis"
     width="10"
-    position="12 7 -8.99">
+    position="10 9 -8.99">
 </a-text>
 <a-text
     y-axis-input
     value=""
     table-name=""
-    position="20 7 -8.99"
+    position="20 9 -8.99"
     width="10"
     geometry="primitive: plane; height: 2; width:10;"
     material="color: white"
@@ -90,13 +99,13 @@
 <a-text
     value="z-axis"
     width="10"
-    position="12 4 -8.99">
+    position="10 6 -8.99">
 </a-text>
 <a-text
     z-axis-input
     value=""
     table-name=""
-    position="20 4 -8.99"
+    position="20 6 -8.99"
     width="10"
     geometry="primitive: plane; height: 2; width:10;"
     material="color: white"
@@ -105,10 +114,14 @@
     input-status="empty">
 </a-text>
 <a-text
-    link="href: config/config.plot.php"
-    generate-button
-    value="Generate"
-    position="20 -2 -8.99"
+    value="condition column"
+    width="10"
+    position="10 2 -8.99">
+</a-text>
+<a-text
+    condition
+    value=""
+    position="20 2 -8.99"
     width="10"
     geometry="primitive: plane; height: 2; width:10;"
     material="color: white"
@@ -116,3 +129,32 @@
     z-offset="0.005"
     input-status="empty">
 </a-text>
+<a-text
+    value="condition value"
+    width="10"
+    position="10 -1 -8.99">
+</a-text>
+<a-text
+    condition-value
+    clicked="false"
+    id="input"
+    value=""
+    position="20 -1 -8.99"
+    width="10"
+    geometry="primitive: plane; height: 2; width:10;"
+    material="color: white"
+    color="black"
+    z-offset="0.005"
+    input-status="empty">
+</a-text>
+
+
+
+<a-entity
+    id="keyboard"
+    position="15 -2.5 -8.99"
+    a-keyboard
+    scale="21 21 21"
+    visible="false"
+    >
+</a-entity>

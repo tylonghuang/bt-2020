@@ -48,6 +48,7 @@ AFRAME.registerComponent('text-field', {
 var xOtherElem;
 var yOtherElem;
 var zOtherElem;
+var cOtherElem;
 
 function xInitColumns() {
     xOtherElem = document.querySelectorAll('a-text[data-type]');
@@ -59,6 +60,10 @@ function yInitColumns() {
 
 function zInitColumns() {
     zOtherElem = document.querySelectorAll('a-text[data-type]');
+}
+
+function cInitColumns() {
+    cOtherElem = document.querySelectorAll('a-text[data-type]');
 }
 
 AFRAME.registerComponent('x-axis-input', {
@@ -322,6 +327,92 @@ AFRAME.registerComponent('z-axis-input', {
     }
 });
 
+AFRAME.registerComponent('condition', {
+    init: function() {
+        var el = this.el;
+        var inputStatus = el.getAttribute('input-status');
+        var activeColor = "lightblue";
+        var defaultColor = "white";
+        const acceptedDataTypes = ['varchar', 'int', 'decimal', 'date', 'double']
+
+
+        el.addEventListener('click', function() {
+            if ((inputStatus == "empty") && (el.getAttribute('value') == "")) {
+
+                cInitColumns();
+                for (let i = 0; i < cOtherElem.length; i++) {
+                    checkDataType(i);
+                    cOtherElem[i].addEventListener('click', cInputValue(i));
+                }
+
+                inputStatus = "active";
+                console.log(inputStatus);
+                this.setAttribute('material', 'color', activeColor);
+                console.log(el.getAttribute('value'));
+                console.log("__________");
+
+
+            } else if ((inputStatus == "active") && (el.getAttribute('value') == "")) {
+
+
+                inputStatus = "empty";
+                console.log(inputStatus);
+                this.setAttribute('material', 'color', defaultColor);
+                console.log(el.getAttribute('value'));
+                console.log("__________");
+
+
+            } else if ((inputStatus == "filled") && (el.getAttribute('value') != "")) {
+
+                cInitColumns();
+                for (let i = 0; i < cOtherElem.length; i++) {
+                    checkDataType(i);
+                    cOtherElem[i].addEventListener('click', cInputValue(i));
+                }
+
+                this.setAttribute('material', 'color', activeColor);
+                inputStatus = "active";
+                console.log(inputStatus);
+                console.log(el.getAttribute('value'));
+                console.log("__________");
+
+
+            } else if ((inputStatus == "active") && (el.getAttribute('value') != "")) {
+
+
+
+                inputStatus = "filled";
+                console.log(inputStatus);
+                console.log(el.getAttribute('value'));
+                this.setAttribute('material', 'color', defaultColor);
+                console.log("__________");
+
+
+            }
+        });
+
+        function checkDataType(i) {
+            if (acceptedDataTypes.includes(cOtherElem[i].getAttribute('data-type')) == false) {
+                cOtherElem[i].setAttribute('color', 'blue');
+            }
+        }
+
+        function cInputValue(i) {
+            return function() {
+                try {
+                    el.setAttribute('value', cOtherElem[i].getAttribute('value'));
+                    cOtherElem = [];
+                    el.setAttribute('material', 'color', defaultColor);
+                    inputStatus = "filled";
+                    console.log(inputStatus);
+                    console.log(el.getAttribute('value'));
+                    console.log("__________");
+                } catch (err) {}
+            }
+        }
+    }
+});
+
 
 AFRAME.registerComponent('generate-button', {
     init: function() {
@@ -330,15 +421,57 @@ AFRAME.registerComponent('generate-button', {
             var xValues = document.querySelectorAll('a-text[x-axis-input]');
             var yValues = document.querySelectorAll('a-text[y-axis-input]');
             var zValues = document.querySelectorAll('a-text[z-axis-input]');
+            var cColumn = document.querySelectorAll('a-text[condition]');
+            var cValue = document.querySelectorAll('a-text[condition-value]');
             var xColumn = xValues[0].getAttribute('value');
             var xTable = xValues[0].getAttribute('table-name');
             var yColumn = yValues[0].getAttribute('value');
             var yTable = yValues[0].getAttribute('table-name');
             var zColumn = zValues[0].getAttribute('value');
             var zTable = zValues[0].getAttribute('table-name');
+            var cColumn = cColumn[0].getAttribute('value');
+            var cValue = cValue[0].getAttribute('value');
             this.setAttribute('material', 'color', 'lightblue');
             var requestLink = "href: plot.php?xC=" + xColumn + "&xT=" + xTable + "&yC=" + yColumn + "&yT=" + yTable + "&zC=" + zColumn + "&zT=" + zTable;
+            if ((cColumn !== "") && (cValue !== "")) {
+                requestLink += "&cC=" + cColumn + "&cV=" + cValue;
+            }
             this.setAttribute('link', requestLink);
+        });
+    }
+})
+
+var input = "";
+
+function updateInput(e) {
+    var code = parseInt(e.detail.code)
+    switch (code) {
+        case 8:
+            input = input.slice(0, -1)
+            break
+        default:
+            input = input + e.detail.value
+            break
+    }
+    document.querySelector('#input').setAttribute('value', input)
+}
+
+AFRAME.registerComponent('condition-value', {
+    init: function() {
+        var el = this.el;
+        var keyboard = document.querySelector('#keyboard')
+        el.addEventListener('click', function() {
+            if (el.getAttribute('clicked') == 'false') {
+                el.setAttribute('material', 'color', "lightblue");
+                keyboard.setAttribute('visible', 'true');
+                document.addEventListener('a-keyboard-update', updateInput)
+                el.setAttribute('clicked', 'true');
+            } else {
+                el.setAttribute('material', 'color', "white");
+                keyboard.setAttribute('visible', 'false');
+                document.removeEventListener('a-keyboard-update', updateInput)
+                el.setAttribute('clicked', 'false');
+            }
         });
     }
 })
