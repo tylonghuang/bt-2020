@@ -93,11 +93,11 @@
 
                         }
 
-                        // Write summed value from y-Axis into large array
-                        $values[$i][$j][0] = $summedValueY;
-                        $test = $values[$i][$j][0];                      
-
                     }
+
+                    // Write summed value from y-Axis into large array
+                    $values[$i][$j][0] = $summedValueY;
+                    $test = $values[$i][$j][0];
 
                     if ($maxY < max($values[$i][$j])){
                         $maxY = max($values[$i][$j]);

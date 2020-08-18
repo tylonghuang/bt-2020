@@ -17,7 +17,7 @@
             // Information ID for Information Box
             $infId++;
 
-            if ((isset($values[$i][$j][0])) && ($values[$i][$j][0] !== 0)){
+            if (isset($values[$i][$j][0]) && $values[$i][$j][0] != 0){
 
 
                 $normalizedValue = normalize($minY, $maxY, $values[$i][$j][0]) * $heightNormalized;
