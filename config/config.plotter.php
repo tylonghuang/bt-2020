@@ -53,7 +53,7 @@
                             geometry="primitive: plane; height: 3; width: auto;"
                             material="color: white"
                             color="black"
-                            z-offset="0.005"
+                            z-offset="0.1"
                             visible="false">
                         </a-text>';
             } else {
@@ -76,7 +76,7 @@
                             geometry="primitive: plane; height: 2; width:5;"
                             material="color: white"
                             color="black"
-                            z-offset="0.005"
+                            z-offset="0.1"
                             visible="false">
                         </a-text>';
             }

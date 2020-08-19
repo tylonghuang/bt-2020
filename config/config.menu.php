@@ -8,7 +8,7 @@
                     side="double"
                     width="10"
                     rotation="0 0 0"
-                    position="0 '.$tableTextHeight.' -8.99" 
+                    position="0 '.$tableTextHeight.' -8.9" 
                     geometry="primitive: plane; height: auto; width:auto;"
                     material="visible: false">
                     </a-text>';
@@ -29,7 +29,7 @@
                         side="double"
                         width="10"
                         rotation="0 0 0"
-                        position="1 '.$tableTextHeight.' -8.99"
+                        position="1 '.$tableTextHeight.' -8.9"
                         geometry="primitive: plane; height: auto; width:auto;"
                         material="visible: false">
                         </a-text>';
@@ -52,95 +52,95 @@
 <a-entity
     link="href: plot.php"
     generate-button
-    text="value: GENERATE; color: white; z-offset: 0.005; width: 10; align: center;"
+    text="value: GENERATE; color: white; z-offset: 0.1; width: 10; align: center;"
     geometry="primitive: plane; height: 2; width: auto;"
     material="color: #0F3448"
-    position="20 16 -8.99">
+    position="20 16 -8.">
 </a-entity>
 
 <a-text
     value="x-axis"
     width="10"
-    position="10 12 -8.99">
+    position="10 12 -8.9">
 </a-text>
 <a-text
     x-axis-input
     value=""
     table-name=""
-    position="20 12 -8.99"
+    position="20 12 -8.9"
     width="10"
     geometry="primitive: plane; height: 2; width:10;"
     material="color: white"
     color="black"
-    z-offset="0.005"
+    z-offset="0.1"
     input-status="empty">
 </a-text>
 <a-text
     value="y-axis"
     width="10"
-    position="10 9 -8.99">
+    position="10 9 -8.9">
 </a-text>
 <a-text
     y-axis-input
     value=""
     table-name=""
-    position="20 9 -8.99"
+    position="20 9 -8.9"
     width="10"
     geometry="primitive: plane; height: 2; width:10;"
     material="color: white"
     color="black"
-    z-offset="0.005"
+    z-offset="0.1"
     input-status="empty">
 </a-text>
 <a-text
     value="z-axis"
     width="10"
-    position="10 6 -8.99">
+    position="10 6 -8.9">
 </a-text>
 <a-text
     z-axis-input
     value=""
     table-name=""
-    position="20 6 -8.99"
+    position="20 6 -8.9"
     width="10"
     geometry="primitive: plane; height: 2; width:10;"
     material="color: white"
     color="black"
-    z-offset="0.005"
+    z-offset="0.1"
     input-status="empty">
 </a-text>
 <a-text
     value="condition column"
     width="10"
-    position="10 2 -8.99">
+    position="10 2 -8.9">
 </a-text>
 <a-text
     condition
     value=""
-    position="20 2 -8.99"
+    position="20 2 -8.9"
     width="10"
     geometry="primitive: plane; height: 2; width:10;"
     material="color: white"
     color="black"
-    z-offset="0.005"
+    z-offset="0.1"
     input-status="empty">
 </a-text>
 <a-text
     value="condition value"
     width="10"
-    position="10 -1 -8.99">
+    position="10 -1 -8.9">
 </a-text>
 <a-text
     condition-value
     clicked="false"
     id="input"
     value=""
-    position="20 -1 -8.99"
+    position="20 -1 -8.9"
     width="10"
     geometry="primitive: plane; height: 2; width:10;"
     material="color: white"
     color="black"
-    z-offset="0.005"
+    z-offset="0.1"
     input-status="empty">
 </a-text>
 
@@ -148,7 +148,7 @@
 
 <a-entity
     id="keyboard"
-    position="15 -2.5 -8.99"
+    position="15 -2.5 -8.9"
     a-keyboard
     scale="21 21 21"
     visible="false"

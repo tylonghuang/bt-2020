@@ -99,8 +99,10 @@
                     $values[$i][$j][0] = $summedValueY;
                     $test = $values[$i][$j][0];
 
-                    if ($maxY < max($values[$i][$j])){
-                        $maxY = max($values[$i][$j]);
+                    if (is_array($values[$i][$j])) {
+                        if ($maxY < max($values[$i][$j])){
+                            $maxY = max($values[$i][$j]);
+                        }
                     }
 
                 }

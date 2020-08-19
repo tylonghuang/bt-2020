@@ -75,13 +75,13 @@ AFRAME.registerComponent('x-axis-input', {
         const acceptedDataTypes = ['varchar', 'int', 'decimal', 'date', 'double']
 
 
-        el.addEventListener('click', function() {
+        el.addEventListener('mousedown', function() {
             if ((inputStatus == "empty") && (el.getAttribute('value') == "")) {
 
                 xInitColumns();
                 for (let i = 0; i < xOtherElem.length; i++) {
                     checkDataType(i);
-                    xOtherElem[i].addEventListener('click', xInputValue(i));
+                    xOtherElem[i].addEventListener('mousedown', xInputValue(i));
                 }
 
                 inputStatus = "active";
@@ -106,7 +106,7 @@ AFRAME.registerComponent('x-axis-input', {
                 xInitColumns();
                 for (let i = 0; i < xOtherElem.length; i++) {
                     checkDataType(i);
-                    xOtherElem[i].addEventListener('click', xInputValue(i));
+                    xOtherElem[i].addEventListener('mousedown', xInputValue(i));
                 }
 
                 this.setAttribute('material', 'color', activeColor);
@@ -162,13 +162,13 @@ AFRAME.registerComponent('y-axis-input', {
         const acceptedDataTypes = ['int', 'decimal', 'double']
 
 
-        el.addEventListener('click', function() {
+        el.addEventListener('mousedown', function() {
             if ((inputStatus == "empty") && (el.getAttribute('value') == "")) {
 
                 yInitColumns();
                 for (let i = 0; i < yOtherElem.length; i++) {
                     checkDataType(i);
-                    yOtherElem[i].addEventListener('click', yInputValue(i));
+                    yOtherElem[i].addEventListener('mousedown', yInputValue(i));
                 }
 
                 inputStatus = "active";
@@ -193,7 +193,7 @@ AFRAME.registerComponent('y-axis-input', {
                 yInitColumns();
                 for (let i = 0; i < yOtherElem.length; i++) {
                     checkDataType(i);
-                    yOtherElem[i].addEventListener('click', yInputValue(i));
+                    yOtherElem[i].addEventListener('mousedown', yInputValue(i));
                 }
 
                 this.setAttribute('material', 'color', activeColor);
@@ -249,13 +249,13 @@ AFRAME.registerComponent('z-axis-input', {
         const acceptedDataTypes = ['varchar', 'int', 'decimal', 'date', 'double']
 
 
-        el.addEventListener('click', function() {
+        el.addEventListener('mousedown', function() {
             if ((inputStatus == "empty") && (el.getAttribute('value') == "")) {
 
                 zInitColumns();
                 for (let i = 0; i < zOtherElem.length; i++) {
                     checkDataType(i);
-                    zOtherElem[i].addEventListener('click', zInputValue(i));
+                    zOtherElem[i].addEventListener('mousedown', zInputValue(i));
                 }
 
                 inputStatus = "active";
@@ -280,7 +280,7 @@ AFRAME.registerComponent('z-axis-input', {
                 zInitColumns();
                 for (let i = 0; i < zOtherElem.length; i++) {
                     checkDataType(i);
-                    zOtherElem[i].addEventListener('click', zInputValue(i));
+                    zOtherElem[i].addEventListener('mousedown', zInputValue(i));
                 }
 
                 this.setAttribute('material', 'color', activeColor);
@@ -336,13 +336,13 @@ AFRAME.registerComponent('condition', {
         const acceptedDataTypes = ['varchar', 'int', 'decimal', 'date', 'double']
 
 
-        el.addEventListener('click', function() {
+        el.addEventListener('mousedown', function() {
             if ((inputStatus == "empty") && (el.getAttribute('value') == "")) {
 
                 cInitColumns();
                 for (let i = 0; i < cOtherElem.length; i++) {
                     checkDataType(i);
-                    cOtherElem[i].addEventListener('click', cInputValue(i));
+                    cOtherElem[i].addEventListener('mousedown', cInputValue(i));
                 }
 
                 inputStatus = "active";
@@ -367,7 +367,7 @@ AFRAME.registerComponent('condition', {
                 cInitColumns();
                 for (let i = 0; i < cOtherElem.length; i++) {
                     checkDataType(i);
-                    cOtherElem[i].addEventListener('click', cInputValue(i));
+                    cOtherElem[i].addEventListener('mousedown', cInputValue(i));
                 }
 
                 this.setAttribute('material', 'color', activeColor);
@@ -417,7 +417,7 @@ AFRAME.registerComponent('condition', {
 AFRAME.registerComponent('generate-button', {
     init: function() {
         var el = this.el;
-        el.addEventListener('click', function() {
+        el.addEventListener('mousedown', function() {
             var xValues = document.querySelectorAll('a-text[x-axis-input]');
             var yValues = document.querySelectorAll('a-text[y-axis-input]');
             var zValues = document.querySelectorAll('a-text[z-axis-input]');
@@ -460,17 +460,17 @@ AFRAME.registerComponent('condition-value', {
     init: function() {
         var el = this.el;
         var keyboard = document.querySelector('#keyboard')
-        el.addEventListener('click', function() {
-            if (el.getAttribute('clicked') == 'false') {
+        el.addEventListener('mousedown', function() {
+            if (el.getAttribute('mousedowned') == 'false') {
                 el.setAttribute('material', 'color', "lightblue");
                 keyboard.setAttribute('visible', 'true');
                 document.addEventListener('a-keyboard-update', updateInput)
-                el.setAttribute('clicked', 'true');
+                el.setAttribute('mousedowned', 'true');
             } else {
                 el.setAttribute('material', 'color', "white");
                 keyboard.setAttribute('visible', 'false');
                 document.removeEventListener('a-keyboard-update', updateInput)
-                el.setAttribute('clicked', 'false');
+                el.setAttribute('mousedowned', 'false');
             }
         });
     }
