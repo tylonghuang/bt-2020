@@ -117,6 +117,7 @@
 <a-text
     condition
     value=""
+    table-name=""
     position="20 2 -8.9"
     width="10"
     geometry="primitive: plane; height: 2; width:10;"

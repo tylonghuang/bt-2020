@@ -20,6 +20,7 @@
 
     if (isset($_REQUEST['cC'])){
         $cColumn = $_REQUEST['cC'];
+        $cTable = $_REQUEST['cT'];
     }
 
     if (isset($_REQUEST['cV'])){

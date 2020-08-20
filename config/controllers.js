@@ -401,6 +401,7 @@ AFRAME.registerComponent('condition', {
             return function() {
                 try {
                     el.setAttribute('value', cOtherElem[i].getAttribute('value'));
+                    el.setAttribute('table-name', cOtherElem[i].getAttribute('table-name'));
                     cOtherElem = [];
                     el.setAttribute('material', 'color', defaultColor);
                     inputStatus = "filled";
@@ -421,20 +422,21 @@ AFRAME.registerComponent('generate-button', {
             var xValues = document.querySelectorAll('a-text[x-axis-input]');
             var yValues = document.querySelectorAll('a-text[y-axis-input]');
             var zValues = document.querySelectorAll('a-text[z-axis-input]');
-            var cColumn = document.querySelectorAll('a-text[condition]');
-            var cValue = document.querySelectorAll('a-text[condition-value]');
+            var cColumns = document.querySelectorAll('a-text[condition]');
+            var cValues = document.querySelectorAll('a-text[condition-value]');
             var xColumn = xValues[0].getAttribute('value');
             var xTable = xValues[0].getAttribute('table-name');
             var yColumn = yValues[0].getAttribute('value');
             var yTable = yValues[0].getAttribute('table-name');
             var zColumn = zValues[0].getAttribute('value');
             var zTable = zValues[0].getAttribute('table-name');
-            var cColumn = cColumn[0].getAttribute('value');
-            var cValue = cValue[0].getAttribute('value');
+            var cColumn = cColumns[0].getAttribute('value');
+            var cTable = cColumns[0].getAttribute('table-name');
+            var cValue = cValues[0].getAttribute('value');
             this.setAttribute('material', 'color', 'lightblue');
             var requestLink = "href: plot.php?xC=" + xColumn + "&xT=" + xTable + "&yC=" + yColumn + "&yT=" + yTable + "&zC=" + zColumn + "&zT=" + zTable;
             if ((cColumn !== "") && (cValue !== "")) {
-                requestLink += "&cC=" + cColumn + "&cV=" + cValue;
+                requestLink += "&cC=" + cColumn + "&cT=" + cTable + "&cV=" + cValue;
             }
             this.setAttribute('link', requestLink);
         });
