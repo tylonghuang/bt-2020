@@ -68,8 +68,23 @@
         $fromQueryZ .= " NATURAL JOIN $zTable";
     }
 
+    if (isset($cTable) && $cTable !== $xTable) {
+        $fromQueryX .= " NATURAL JOIN $cTable";
+    }
+
+    if (isset($cTable) && $cTable !== $xTable && $cTable !== $zTable) {
+        $fromQueryZ .= " NATURAL JOIN $cTable";
+    }
+
     // Query for x-Axis
-    $sqlX = "SELECT DISTINCT $xColumn FROM $fromQueryX ORDER BY $xColumn";
+    $sqlX = "SELECT DISTINCT $xColumn FROM $fromQueryX";
+
+    if (isset($cTable)) {
+        $sqlX .= " WHERE $cColumn='$cValue'";
+    }
+
+    $sqlX .= " ORDER BY $xColumn";
+
     $result = $conn->query($sqlX);
 
     if ($result->num_rows > 0) {
@@ -95,7 +110,14 @@
             $conditionX = $values[$i];
 
             // Query for z-Axis
-            $zSql = "SELECT DISTINCT $zColumn FROM $fromQueryZ WHERE $xColumn='$conditionX' ORDER BY $zColumn DESC";
+            $zSql = "SELECT DISTINCT $zColumn FROM $fromQueryZ WHERE $xColumn='$conditionX'";
+
+            if (isset($cTable)) {
+                $zSql .= " AND $cColumn='$cValue'";
+            }
+
+            $zSql .= " ORDER BY $zColumn DESC";
+
             $result = $conn->query($zSql);
             $j = 0;
 
@@ -139,7 +161,7 @@
                             // Sum values from y-Axis                            
                             $summedValueY = $summedValueY + str_replace(',', '.', $row[$yColumn]);
 
-                            //consoleLog("time");
+                            consoleLog("time");
 
                         }
 
