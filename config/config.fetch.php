@@ -12,6 +12,7 @@
     global $minY;
     global $quantityX;
     global $quantityZ;
+    global $fromQuery;
     $maxY = 0;
     $minY = 0;
     $i = 0;
@@ -19,9 +20,58 @@
     $k = 0;
     $summedValueY = 0;
     $limit = 1000;
+    $fromQuery = "";
+
+    if ($xTable === $yTable && $yTable === $zTable) {
+        $fromQuery = $xTable;
+        if (isset($cTable) && $cTable !== $zTable) {
+            $fromQuery .= " NATURAL JOIN $cTable";
+        }
+    } else if ($xTable === $yTable && $yTable !== $zTable) {
+
+        $fromQuery = $xTable;
+        $fromQuery .= " NATURAL JOIN $zTable";
+
+        if (isset($cTable) && $cTable !== $zTable && $cTable !== $xTable) {
+            $fromQuery .= " NATURAL JOIN $cTable";
+        }
+    } else if ($xTable === $zTable && $zTable !== $yTable) {
+
+        $fromQuery = $xTable;
+        $fromQuery .= " NATURAL JOIN $yTable";
+
+        if (isset($cTable) && $cTable !== $yTable && $cTable !== $xTable) {
+            $fromQuery .= " NATURAL JOIN $cTable";
+        }
+    } else if ($yTable === $zTable && $zTable !== $xTable) {
+
+        $fromQuery = $yTable;
+        $fromQuery .= " NATURAL JOIN $xTable";
+
+        if (isset($cTable) && $cTable !== $yTable && $cTable !== $xTable) {
+            $fromQuery .= " NATURAL JOIN $cTable";
+        }
+    } else if ($xTable !== $yTable && $zTable !== $yTable && $xTable !== $zTable) {
+
+        $fromQuery = $xTable;
+        $fromQuery .= " NATURAL JOIN $yTable NATURAL JOIN $zTable";
+
+        if (isset($cTable) && $cTable !== $xTable && $cTable !== $yTable && $cTable !== $zTable) {
+            $fromQuery .= " NATURAL JOIN $cTable";
+        }
+    }
+
+    $fromQueryX = $xTable;
+    $fromQueryZ = $xTable;
+
+    if ($xTable !== $zTable) {
+        $fromQueryZ .= " NATURAL JOIN $zTable";
+    }
+
+    consoleLog($fromQuery);
 
     // Query for x-Axis
-    $sqlX = "SELECT DISTINCT $xColumn FROM $xTable ORDER BY $xColumn";
+    $sqlX = "SELECT DISTINCT $xColumn FROM $fromQueryX ORDER BY $xColumn";
     $result = $conn->query($sqlX);
 
     if ($result->num_rows > 0) {
@@ -44,10 +94,10 @@
         // For-Loop to go through z-axis
         for ($i = 0; $i < $quantityX; $i++){
 
-            $conditionX = $values[$i]; 
+            $conditionX = $values[$i];
 
             // Query for z-Axis
-            $zSql = "SELECT DISTINCT $zColumn FROM $zTable WHERE $xColumn='$conditionX' ORDER BY $zColumn DESC";
+            $zSql = "SELECT DISTINCT $zColumn FROM $fromQueryZ WHERE $xColumn='$conditionX' ORDER BY $zColumn DESC";
             $result = $conn->query($zSql);
             $j = 0;
 
@@ -74,10 +124,10 @@
                     $conditionZ = $values[$i][$j];
                     $summedValueY = 0;
                     // Query for y-Axis
-                    $ySql = "SELECT $yColumn FROM $yTable WHERE $xColumn='$conditionX' AND $zColumn='$conditionZ' ";
+                    $ySql = 'SELECT '.$yColumn.' FROM '.$fromQuery.' WHERE '.$xColumn.'="'.$conditionX.'" AND '.$zColumn.'="'.$conditionZ.'"';
 
                     if (isset($cColumn) && isset($cValue)) {
-                        $ySql .= "AND $cColumn='$cValue'";
+                        $ySql .= ' AND '.$cColumn.'="'.$cValue.'"';
                     }
 
                     $result = $conn->query($ySql);

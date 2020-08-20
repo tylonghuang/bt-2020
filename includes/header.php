@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <title>bt-2020</title>
 
-        <script src="/bt-2020/config/aframe.min.js"></script>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
         <script src="/bt-2020/config/controllers.js"></script>
         <script src="/bt-2020/config/aframe-keyboard.min.js"></script>
         <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
