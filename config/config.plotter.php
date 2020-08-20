@@ -104,7 +104,6 @@
     }
 
     if (isset($cColumn) && isset($cValue)) {
-        $ySql .= "AND $cColumn='$cValue'";
         echo    '<a-text 
                     value="Condition: '.$cColumn.'='.$cValue.'" 
                     side="double"

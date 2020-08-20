@@ -68,8 +68,6 @@
         $fromQueryZ .= " NATURAL JOIN $zTable";
     }
 
-    consoleLog($fromQuery);
-
     // Query for x-Axis
     $sqlX = "SELECT DISTINCT $xColumn FROM $fromQueryX ORDER BY $xColumn";
     $result = $conn->query($sqlX);
@@ -140,6 +138,8 @@
 
                             // Sum values from y-Axis                            
                             $summedValueY = $summedValueY + str_replace(',', '.', $row[$yColumn]);
+
+                            //consoleLog("time");
 
                         }
 
