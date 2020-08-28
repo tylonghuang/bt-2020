@@ -31,7 +31,7 @@
 
     if (isset($_REQUEST['cV'])){
         $cValue = $_REQUEST['cV'];
-        $menuLink .= "&cV=".$cColumn;
+        $menuLink .= "&cV=".$cValue;
     }
 
 
