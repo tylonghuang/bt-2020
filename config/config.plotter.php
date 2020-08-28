@@ -41,25 +41,21 @@
                             position="'.$i.' '.$posY.' '.$posZ.'">
                         </a-box>';
 
-                echo    '<a-text
+
+                echo    '<a-entity
                             infId="'.$infId.'"
-                            align="left"
-                            value="
-                                '.$xColumn.': '.$xValues[$i].' \n
-                                '.$zColumn.': '.$zValues[$j].' \n
-                                '.$yColumn.': '.$values[$i][$j][0].'"
+                            text="value: '.$xColumn.': '.$xValues[$i].' \n
+                                            '.$zColumn.': '.$zValues[$j].' \n
+                                            '.$yColumn.': '.$values[$i][$j][0].'; color: black; width: 10; z-offset: 0.1; align: center;"
                             position="'.$i.' 18 '.$posZ.'"
-                            width="10"
                             geometry="primitive: plane; height: 3; width: auto;"
                             material="color: white"
-                            color="black"
-                            z-offset="0.1"
                             visible="false">
-                        </a-text>';
+                        </a-entity>';
             } else {
                 $posZ = $j - $quantityZ;
                 echo    '<a-box     
-                            text-field
+                            text-field-null
                             infId="'.$infId.'"
                             color="red" 
                             depth="0.5" 
@@ -67,18 +63,14 @@
                             width="0.5" 
                             position="'.$i.' 0 '.$posZ.'">
                         </a-box>';
-                echo    '<a-text
+                echo    '<a-entity
                             infId="'.$infId.'"
-                            align="left"
-                            value="No Values Found"
+                            text="value: No Values Found; color: black; width: 10; z-offset: 0.1; align: center;"
                             position="'.$i.' 18 '.$posZ.'"
-                            width="10"
-                            geometry="primitive: plane; height: 2; width:5;"
+                            geometry="primitive: plane; height: 2; width: auto;"
                             material="color: white"
-                            color="black"
-                            z-offset="0.1"
                             visible="false">
-                        </a-text>';
+                        </a-entity>';
             }
         }
 

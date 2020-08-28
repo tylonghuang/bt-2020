@@ -45,7 +45,7 @@
     link="href: index.php"
     text="value: MENU; color: white; z-offset: 0.1; width: 10; align: center;"
     geometry="primitive: plane; height: 2; width:5;"
-    material="color: #0F3448"
+    material="color: #0F3448; side: double"
     position="1.25 -7 0">
 </a-entity>
 

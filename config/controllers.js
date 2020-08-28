@@ -25,7 +25,7 @@ AFRAME.registerComponent('text-field', {
         var el = this.el;
         el.addEventListener('mouseenter', function() {
             let infId = el.getAttribute('infId')
-            let customQuery = 'a-text[infId="' + infId + '"]'
+            let customQuery = 'a-entity[infId="' + infId + '"]'
             let infField = document.querySelector(customQuery);
             infField.setAttribute('visible', true);
             if (infField.getAttribute('value') !== 'Not Found') {
@@ -35,11 +35,38 @@ AFRAME.registerComponent('text-field', {
 
         el.addEventListener('mouseleave', function() {
             let infId = el.getAttribute('infId')
-            let customQuery = 'a-text[infId="' + infId + '"]'
+            let customQuery = 'a-entity[infId="' + infId + '"]'
             let infField = document.querySelector(customQuery);
             infField.setAttribute('visible', false);
             if (infField.getAttribute('value') !== 'Not Found') {
                 el.setAttribute('color', '#c0ebf0');
+            }
+        });
+    }
+});
+
+AFRAME.registerComponent('text-field-null', {
+
+
+    init: function() {
+        var el = this.el;
+        el.addEventListener('mouseenter', function() {
+            let infId = el.getAttribute('infId')
+            let customQuery = 'a-entity[infId="' + infId + '"]'
+            let infField = document.querySelector(customQuery);
+            infField.setAttribute('visible', true);
+            if (infField.getAttribute('value') !== 'Not Found') {
+                el.setAttribute('color', '#11adbf');
+            }
+        });
+
+        el.addEventListener('mouseleave', function() {
+            let infId = el.getAttribute('infId')
+            let customQuery = 'a-entity[infId="' + infId + '"]'
+            let infField = document.querySelector(customQuery);
+            infField.setAttribute('visible', false);
+            if (infField.getAttribute('value') !== 'Not Found') {
+                el.setAttribute('color', 'red');
             }
         });
     }
