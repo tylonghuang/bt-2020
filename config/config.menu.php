@@ -65,8 +65,8 @@
 </a-text>
 <a-text
     x-axis-input
-    value=""
-    table-name=""
+    value="<?php echo $xColumn; ?>"
+    table-name="<?php echo $xTable; ?>"
     position="20 12 -8.9"
     width="10"
     geometry="primitive: plane; height: 2; width:10;"
@@ -82,8 +82,8 @@
 </a-text>
 <a-text
     y-axis-input
-    value=""
-    table-name=""
+    value="<?php echo $yColumn; ?>"
+    table-name="<?php echo $yTable; ?>"
     position="20 9 -8.9"
     width="10"
     geometry="primitive: plane; height: 2; width:10;"
@@ -99,8 +99,8 @@
 </a-text>
 <a-text
     z-axis-input
-    value=""
-    table-name=""
+    value="<?php echo $zColumn; ?>"
+    table-name="<?php echo $zTable; ?>"
     position="20 6 -8.9"
     width="10"
     geometry="primitive: plane; height: 2; width:10;"
@@ -116,8 +116,8 @@
 </a-text>
 <a-text
     condition
-    value=""
-    table-name=""
+    value="<?php echo $cColumn; ?>"
+    table-name="<?php echo $cTable; ?>"
     position="20 2 -8.9"
     width="10"
     geometry="primitive: plane; height: 2; width:10;"
@@ -135,7 +135,7 @@
     condition-value
     clicked="false"
     id="input"
-    value=""
+    value="<?php echo $cValue; ?>"
     position="20 -1 -8.9"
     width="10"
     geometry="primitive: plane; height: 2; width:10;"
