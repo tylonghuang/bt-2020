@@ -466,7 +466,7 @@ AFRAME.registerComponent('generate-button', {
     init: function() {
         var el = this.el;
         el.addEventListener('mousedown', function() {
-            this.setAttribute('material', 'color', 'lightblue');
+            el.setAttribute('material', 'color', 'lightblue');
             setTimeout(function() { this.setAttribute('material', 'color', '#0F3448'); }, 100);
             var xValues = document.querySelectorAll('a-text[x-axis-input]');
             var yValues = document.querySelectorAll('a-text[y-axis-input]');
