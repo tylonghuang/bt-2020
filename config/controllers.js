@@ -466,6 +466,8 @@ AFRAME.registerComponent('generate-button', {
     init: function() {
         var el = this.el;
         el.addEventListener('mousedown', function() {
+            this.setAttribute('material', 'color', 'lightblue');
+            setTimeout(function() { this.setAttribute('material', 'color', '#0F3448'); }, 100);
             var xValues = document.querySelectorAll('a-text[x-axis-input]');
             var yValues = document.querySelectorAll('a-text[y-axis-input]');
             var zValues = document.querySelectorAll('a-text[z-axis-input]');
@@ -480,8 +482,6 @@ AFRAME.registerComponent('generate-button', {
             var cColumn = cColumns[0].getAttribute('value');
             var cTable = cColumns[0].getAttribute('table-name');
             var cValue = cValues[0].getAttribute('value');
-            this.setAttribute('material', 'color', 'lightblue');
-            setTimeout(function() { this.setAttribute('material', 'color', '#0F3448'); }, 100);
             var requestLink = "href: plot.php?xC=" + xColumn + "&xT=" + xTable + "&yC=" + yColumn + "&yT=" + yTable + "&zC=" + zColumn + "&zT=" + zTable;
             if ((cColumn !== "") && (cValue !== "")) {
                 requestLink += "&cC=" + cColumn + "&cT=" + cTable + "&cV=" + cValue;
