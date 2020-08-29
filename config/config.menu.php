@@ -56,7 +56,7 @@
 
 <a-plane 
     height="<?php echo $listedItemsCounter ?>"
-    width="30" 
+    width="32" 
     rotation="0 0 0" 
     side="double" 
     color="#08141C" 
@@ -64,8 +64,8 @@
     position="14 <?php echo $yBackgroundPos ?> -9">
 </a-plane>
 <a-plane 
-    height="30"
-    width="30" 
+    height="31"
+    width="32" 
     rotation="0 0 0" 
     side="double" 
     color="#08141C" 
