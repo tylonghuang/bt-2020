@@ -45,7 +45,7 @@
     rotation="0 0 0" 
     side="double" 
     color="#08141C" 
-    material="opacity: 0.97; transparent: true" 
+    material="opacity: 0.97; transparent: true;" 
     position="14 -4 -9">
 </a-plane>
 
@@ -75,6 +75,13 @@
     z-offset="0.1"
     input-status="empty">
 </a-text>
+<a-entity
+    delete="passedField: x-axis-input"
+    text="value: DELETE; color: white; z-offset: 0.1; width: 10; align: center;"
+    geometry="primitive: plane; height: 2; width: 3;"
+    material="color: #a12f2f"
+    position="27 12 -8.9">
+</a-entity>
 <a-text
     value="y-axis"
     width="10"
@@ -92,6 +99,13 @@
     z-offset="0.1"
     input-status="empty">
 </a-text>
+<a-entity
+    delete="passedField: y-axis-input"
+    text="value: DELETE; color: white; z-offset: 0.1; width: 10; align: center;"
+    geometry="primitive: plane; height: 2; width: 3;"
+    material="color: #a12f2f"
+    position="27 9 -8.9">
+</a-entity>
 <a-text
     value="z-axis"
     width="10"
@@ -109,6 +123,13 @@
     z-offset="0.1"
     input-status="empty">
 </a-text>
+<a-entity
+    delete="passedField: z-axis-input"
+    text="value: DELETE; color: white; z-offset: 0.1; width: 10; align: center;"
+    geometry="primitive: plane; height: 2; width: 3;"
+    material="color: #a12f2f"
+    position="27 6 -8.9">
+</a-entity>
 <a-text
     value="condition column"
     width="10"
@@ -126,6 +147,13 @@
     z-offset="0.1"
     input-status="empty">
 </a-text>
+<a-entity
+    delete="passedField: condition"
+    text="value: DELETE; color: white; z-offset: 0.1; width: 10; align: center;"
+    geometry="primitive: plane; height: 2; width: 3;"
+    material="color: #a12f2f"
+    position="27 2 -8.9">
+</a-entity>
 <a-text
     value="condition value"
     width="10"
@@ -144,6 +172,13 @@
     z-offset="0.1"
     input-status="empty">
 </a-text>
+<a-entity
+    delete="passedField: condition-value"
+    text="value: DELETE; color: white; z-offset: 0.1; width: 10; align: center;"
+    geometry="primitive: plane; height: 2; width: 3;"
+    material="color: #a12f2f"
+    position="27 -1 -8.9">
+</a-entity>
 
 
 

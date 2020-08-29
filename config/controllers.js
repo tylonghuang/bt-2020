@@ -96,13 +96,13 @@ function cInitColumns() {
 AFRAME.registerComponent('x-axis-input', {
     init: function() {
         var el = this.el;
-        var inputStatus = el.getAttribute('input-status');
         var activeColor = "lightblue";
         var defaultColor = "white";
         const acceptedDataTypes = ['varchar', 'int', 'decimal', 'date', 'double']
 
-
         el.addEventListener('mousedown', function() {
+            var inputStatus = el.getAttribute('input-status');
+
             if ((inputStatus == "empty") && (el.getAttribute('value') == "")) {
 
                 xInitColumns();
@@ -112,6 +112,7 @@ AFRAME.registerComponent('x-axis-input', {
                 }
 
                 inputStatus = "active";
+                el.setAttribute('input-status', inputStatus);
                 console.log(inputStatus);
                 this.setAttribute('material', 'color', activeColor);
                 console.log(el.getAttribute('value'));
@@ -122,6 +123,7 @@ AFRAME.registerComponent('x-axis-input', {
 
 
                 inputStatus = "empty";
+                el.setAttribute('input-status', inputStatus);
                 console.log(inputStatus);
                 this.setAttribute('material', 'color', defaultColor);
                 console.log(el.getAttribute('value'));
@@ -138,6 +140,7 @@ AFRAME.registerComponent('x-axis-input', {
 
                 this.setAttribute('material', 'color', activeColor);
                 inputStatus = "active";
+                el.setAttribute('input-status', inputStatus);
                 console.log(inputStatus);
                 console.log(el.getAttribute('value'));
                 console.log("__________");
@@ -148,6 +151,7 @@ AFRAME.registerComponent('x-axis-input', {
 
 
                 inputStatus = "filled";
+                el.setAttribute('input-status', inputStatus);
                 console.log(inputStatus);
                 console.log(el.getAttribute('value'));
                 this.setAttribute('material', 'color', defaultColor);
@@ -171,6 +175,7 @@ AFRAME.registerComponent('x-axis-input', {
                     xOtherElem = [];
                     el.setAttribute('material', 'color', defaultColor);
                     inputStatus = "filled";
+                    el.setAttribute('input-status', inputStatus);
                     console.log(inputStatus);
                     console.log(el.getAttribute('value'));
                     console.log("__________");
@@ -183,13 +188,13 @@ AFRAME.registerComponent('x-axis-input', {
 AFRAME.registerComponent('y-axis-input', {
     init: function() {
         var el = this.el;
-        var inputStatus = el.getAttribute('input-status');
         var activeColor = "lightblue";
         var defaultColor = "white";
-        const acceptedDataTypes = ['int', 'decimal', 'double']
+        const acceptedDataTypes = ['varchar', 'int', 'decimal', 'date', 'double']
 
 
         el.addEventListener('mousedown', function() {
+            var inputStatus = el.getAttribute('input-status');
             if ((inputStatus == "empty") && (el.getAttribute('value') == "")) {
 
                 yInitColumns();
@@ -199,6 +204,7 @@ AFRAME.registerComponent('y-axis-input', {
                 }
 
                 inputStatus = "active";
+                el.setAttribute('input-status', inputStatus);
                 console.log(inputStatus);
                 this.setAttribute('material', 'color', activeColor);
                 console.log(el.getAttribute('value'));
@@ -209,6 +215,7 @@ AFRAME.registerComponent('y-axis-input', {
 
 
                 inputStatus = "empty";
+                el.setAttribute('input-status', inputStatus);
                 console.log(inputStatus);
                 this.setAttribute('material', 'color', defaultColor);
                 console.log(el.getAttribute('value'));
@@ -225,6 +232,7 @@ AFRAME.registerComponent('y-axis-input', {
 
                 this.setAttribute('material', 'color', activeColor);
                 inputStatus = "active";
+                el.setAttribute('input-status', inputStatus);
                 console.log(inputStatus);
                 console.log(el.getAttribute('value'));
                 console.log("__________");
@@ -235,6 +243,7 @@ AFRAME.registerComponent('y-axis-input', {
 
 
                 inputStatus = "filled";
+                el.setAttribute('input-status', inputStatus);
                 console.log(inputStatus);
                 console.log(el.getAttribute('value'));
                 this.setAttribute('material', 'color', defaultColor);
@@ -258,6 +267,7 @@ AFRAME.registerComponent('y-axis-input', {
                     yOtherElem = [];
                     el.setAttribute('material', 'color', defaultColor);
                     inputStatus = "filled";
+                    el.setAttribute('input-status', inputStatus);
                     console.log(inputStatus);
                     console.log(el.getAttribute('value'));
                     console.log("__________");
@@ -270,13 +280,13 @@ AFRAME.registerComponent('y-axis-input', {
 AFRAME.registerComponent('z-axis-input', {
     init: function() {
         var el = this.el;
-        var inputStatus = el.getAttribute('input-status');
         var activeColor = "lightblue";
         var defaultColor = "white";
         const acceptedDataTypes = ['varchar', 'int', 'decimal', 'date', 'double']
 
 
         el.addEventListener('mousedown', function() {
+            var inputStatus = el.getAttribute('input-status');
             if ((inputStatus == "empty") && (el.getAttribute('value') == "")) {
 
                 zInitColumns();
@@ -286,6 +296,7 @@ AFRAME.registerComponent('z-axis-input', {
                 }
 
                 inputStatus = "active";
+                el.setAttribute('input-status', inputStatus);
                 console.log(inputStatus);
                 this.setAttribute('material', 'color', activeColor);
                 console.log(el.getAttribute('value'));
@@ -296,6 +307,7 @@ AFRAME.registerComponent('z-axis-input', {
 
 
                 inputStatus = "empty";
+                el.setAttribute('input-status', inputStatus);
                 console.log(inputStatus);
                 this.setAttribute('material', 'color', defaultColor);
                 console.log(el.getAttribute('value'));
@@ -312,6 +324,7 @@ AFRAME.registerComponent('z-axis-input', {
 
                 this.setAttribute('material', 'color', activeColor);
                 inputStatus = "active";
+                el.setAttribute('input-status', inputStatus);
                 console.log(inputStatus);
                 console.log(el.getAttribute('value'));
                 console.log("__________");
@@ -323,6 +336,7 @@ AFRAME.registerComponent('z-axis-input', {
 
                 inputStatus = "filled";
                 console.log(inputStatus);
+                el.setAttribute('input-status', inputStatus);
                 console.log(el.getAttribute('value'));
                 this.setAttribute('material', 'color', defaultColor);
                 console.log("__________");
@@ -345,6 +359,7 @@ AFRAME.registerComponent('z-axis-input', {
                     zOtherElem = [];
                     el.setAttribute('material', 'color', defaultColor);
                     inputStatus = "filled";
+                    el.setAttribute('input-status', inputStatus);
                     console.log(inputStatus);
                     console.log(el.getAttribute('value'));
                     console.log("__________");
@@ -357,13 +372,13 @@ AFRAME.registerComponent('z-axis-input', {
 AFRAME.registerComponent('condition', {
     init: function() {
         var el = this.el;
-        var inputStatus = el.getAttribute('input-status');
         var activeColor = "lightblue";
         var defaultColor = "white";
         const acceptedDataTypes = ['varchar', 'int', 'decimal', 'date', 'double']
 
 
         el.addEventListener('mousedown', function() {
+            var inputStatus = el.getAttribute('input-status');
             if ((inputStatus == "empty") && (el.getAttribute('value') == "")) {
 
                 cInitColumns();
@@ -373,6 +388,7 @@ AFRAME.registerComponent('condition', {
                 }
 
                 inputStatus = "active";
+                el.setAttribute('input-status', inputStatus);
                 console.log(inputStatus);
                 this.setAttribute('material', 'color', activeColor);
                 console.log(el.getAttribute('value'));
@@ -383,6 +399,7 @@ AFRAME.registerComponent('condition', {
 
 
                 inputStatus = "empty";
+                el.setAttribute('input-status', inputStatus);
                 console.log(inputStatus);
                 this.setAttribute('material', 'color', defaultColor);
                 console.log(el.getAttribute('value'));
@@ -399,6 +416,7 @@ AFRAME.registerComponent('condition', {
 
                 this.setAttribute('material', 'color', activeColor);
                 inputStatus = "active";
+                el.setAttribute('input-status', inputStatus);
                 console.log(inputStatus);
                 console.log(el.getAttribute('value'));
                 console.log("__________");
@@ -409,6 +427,7 @@ AFRAME.registerComponent('condition', {
 
 
                 inputStatus = "filled";
+                el.setAttribute('input-status', inputStatus);
                 console.log(inputStatus);
                 console.log(el.getAttribute('value'));
                 this.setAttribute('material', 'color', defaultColor);
@@ -432,6 +451,7 @@ AFRAME.registerComponent('condition', {
                     cOtherElem = [];
                     el.setAttribute('material', 'color', defaultColor);
                     inputStatus = "filled";
+                    el.setAttribute('input-status', inputStatus);
                     console.log(inputStatus);
                     console.log(el.getAttribute('value'));
                     console.log("__________");
@@ -461,6 +481,7 @@ AFRAME.registerComponent('generate-button', {
             var cTable = cColumns[0].getAttribute('table-name');
             var cValue = cValues[0].getAttribute('value');
             this.setAttribute('material', 'color', 'lightblue');
+            setTimeout(function() { this.setAttribute('material', 'color', '#0F3448'); }, 100);
             var requestLink = "href: plot.php?xC=" + xColumn + "&xT=" + xTable + "&yC=" + yColumn + "&yT=" + yTable + "&zC=" + zColumn + "&zT=" + zTable;
             if ((cColumn !== "") && (cValue !== "")) {
                 requestLink += "&cC=" + cColumn + "&cT=" + cTable + "&cV=" + cValue;
@@ -501,6 +522,26 @@ AFRAME.registerComponent('condition-value', {
                 document.removeEventListener('a-keyboard-update', updateInput)
                 el.setAttribute('mousedowned', 'false');
             }
+        });
+    }
+})
+
+
+AFRAME.registerComponent('delete', {
+    schema: {
+        passedField: { type: 'string' }
+    },
+    init: function() {
+        var data = this.data;
+        var el = this.el;
+        var input = document.querySelector('a-text[' + data.passedField + ']');
+
+        el.addEventListener('mousedown', function() {
+            input.setAttribute('value', '');
+            input.setAttribute('table-name', '');
+            input.setAttribute('input-status', 'empty');
+            el.setAttribute('material', 'color', '#6e1818');
+            setTimeout(function() { el.setAttribute('material', 'color', '#a12f2f'); }, 100);
         });
     }
 })
