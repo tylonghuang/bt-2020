@@ -3,7 +3,7 @@
 This repository contains the code of the bachelor thesis from Long Hoang Nguyen & Georg David Ritterbusch. In the course of the thesis, we explored the open-source web framework A-Frame and its potential to visualize large amounts of data from data warehouses. Our exploration resulted in a tool that allows users to virtually walk through data like in a real warehouse.
 
 ## Preview
-Coming soon.
+![](/assets/preview.gif "Tool Preview")
 
 ## Tools and technologies
 - Visualization: [A-Frame](https://aframe.io/)
@@ -11,7 +11,7 @@ Coming soon.
 - Testing: [Firefox](https://www.mozilla.org/) and [HTC Vive](https://www.vive.com/)
 
 ## Software architecture
-Coming soon.
+![](/assets/architecture.svg "Visualization of Architecture")
 
 ## Setup and usage
 * Set up your controllers in case you have some
